@@ -27,7 +27,7 @@ public class StockItemController {
     }
     @PostMapping("/add")
     public StockItemDTO addStockItem(@RequestBody StockItem stockItem){
-        messagingTemplate.convertAndSend("/stockUpdate", stockItem.getItem().getId());
+        messagingTemplate.convertAndSend("/stockUpdate", stockItem.getQuantity());
         return stockItemService.addStockItem(stockItem);
     }
     @GetMapping("/{id}")

@@ -49,6 +49,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public List<ItemDTO> findAllItems() {
+        return itemRepository.findAll().stream().map(itemDTOMapper).collect(Collectors.toList());
+    }
+
+    @Override
     public ItemDTO getItemById(Long itemId) {
         return itemDTOMapper.apply(itemRepository.findById(itemId)
                 .orElseThrow(() -> new NoSuchElementException("No item found with id: " + itemId)));
@@ -71,6 +76,7 @@ public class ItemServiceImpl implements ItemService {
             sizes.add(sizeService.addSize(size));
         }
 
+        itemUpdated.setCategory(item.getCategory());
         itemUpdated.setSizes(sizes);
         itemUpdated.setDescription(item.getDescription());
         itemUpdated.setName(item.getName());
@@ -108,7 +114,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemDTO> getItemsByCategory_Name(String name) {
-        return itemRepository.getItemsByCategory_Name(name).stream().map(itemDTOMapper).collect(Collectors.toList());
+    public List<ItemDTO> getItemsByItemIngredientsIsNull() {
+        return itemRepository.getItemsByItemIngredientsIsNull().stream().map(itemDTOMapper).collect(Collectors.toList());
     }
 }

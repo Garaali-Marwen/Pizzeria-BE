@@ -6,6 +6,8 @@ import com.example.pizzeria.Services.SizeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 @Service
 @AllArgsConstructor
 public class SizeServiceImpl implements SizeService {
@@ -19,5 +21,10 @@ public class SizeServiceImpl implements SizeService {
     @Override
     public void deleteSize(Long id) {
         sizeRepository.deleteById(id);
+    }
+
+    @Override
+    public Size getSizeById(Long id) {
+        return sizeRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Not found"));
     }
 }

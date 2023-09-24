@@ -39,7 +39,8 @@ public class ItemDiscountServiceImpl implements ItemDiscountService {
     public ItemDiscountDTO updateItemDiscount(ItemDiscountDTO itemDiscountDTO) {
         ItemDiscount itemDiscount = itemDiscountRepository.findById(itemDiscountDTO.id())
                 .orElseThrow(() -> new NoSuchElementException("No itemDiscount found with id: "+itemDiscountDTO.id()));
-        itemDiscount.setDiscount(itemDiscountDTO.discount());
+        itemDiscount.setSize(itemDiscountDTO.size());
+        itemDiscount.setQuantity(itemDiscount.getQuantity());
         itemDiscountRepository.save(itemDiscount);
         return itemDiscountDTO;
     }

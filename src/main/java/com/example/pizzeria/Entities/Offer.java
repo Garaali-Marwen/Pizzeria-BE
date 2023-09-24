@@ -18,7 +18,7 @@ public class Offer {
     private double totalPrice;
     private Date beginDate;
     private Date endDate;
-    @OneToMany
+    @OneToMany(mappedBy = "offer")
     private List<ItemDiscount> itemsDiscount = new ArrayList<>();
     @OneToOne(cascade = CascadeType.ALL)
     private Image image;

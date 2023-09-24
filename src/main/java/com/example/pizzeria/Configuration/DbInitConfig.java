@@ -2,9 +2,11 @@ package com.example.pizzeria.Configuration;
 
 import com.example.pizzeria.Entities.Admin;
 import com.example.pizzeria.Entities.Category;
+import com.example.pizzeria.Entities.Config;
 import com.example.pizzeria.Enum.Role;
 import com.example.pizzeria.Repositories.AdminRepository;
 import com.example.pizzeria.Repositories.CategoryRepository;
+import com.example.pizzeria.Repositories.ConfigRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +22,7 @@ public class DbInitConfig implements CommandLineRunner {
     private final AdminRepository adminRepository;
     private final PasswordEncoder passwordEncoder;
     private final CategoryRepository categoryRepository;
+    private final ConfigRepository configRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -34,7 +37,7 @@ public class DbInitConfig implements CommandLineRunner {
         }
         if (categoryRepository.count() == 0) {
             Category drinks = new Category();
-            drinks.setName("drinks");
+            drinks.setName("Boissons");
 
             Category pizzas = new Category();
             pizzas.setName("pizzas");
@@ -42,6 +45,13 @@ public class DbInitConfig implements CommandLineRunner {
             Category sandwichs = new Category();
             sandwichs.setName("sandwichs");
             categoryRepository.saveAll(Arrays.asList(drinks, pizzas, sandwichs));
+        }
+        if (configRepository.count() == 0) {
+            Config config = new Config();
+            config.setDeliveryPhone("1-320-544-8749");
+            config.setContactPhone("1-320-544-8749");
+            config.setContactEmail("garaali.marwen@gmail.com");
+            configRepository.save(config);
         }
     }
 }

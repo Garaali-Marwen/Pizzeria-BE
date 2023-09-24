@@ -12,8 +12,9 @@ public interface ItemService {
 
     ItemDTO addItem(Item item);
     Page<ItemDTO> getAllItems(Integer pageNumber, Integer pageSize);
+    List<ItemDTO> findAllItems();
     ItemDTO getItemById(Long itemId);
     ItemDTO updateItem(Item item, Image image);
     void deleteItem(Long itemId);
-    List<ItemDTO> getItemsByCategory_Name(String name);
+    List<ItemDTO> getItemsByItemIngredientsIsNull();
 }

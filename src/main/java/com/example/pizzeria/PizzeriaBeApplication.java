@@ -22,21 +22,4 @@ public class PizzeriaBeApplication {
         Twilio.init(twilioConfiguration.getAccountSid(), twilioConfiguration.getAuthToken());
     }
     public static void main(String[] args) {SpringApplication.run(PizzeriaBeApplication.class, args);}
-
-    @Bean
-    public CommandLineRunner stripeWebhookInitializer() {
-        return args -> {
-            String stripeCliCommand = "stripe listen --forward-to http://localhost:8080/webhook";
-
-            ProcessBuilder processBuilder = new ProcessBuilder();
-            processBuilder.command("cmd.exe", "/c", stripeCliCommand);
-
-            try {
-                Process process = processBuilder.start();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        };
-    }
-
 }

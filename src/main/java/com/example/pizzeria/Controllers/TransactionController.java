@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -27,7 +29,37 @@ public class TransactionController {
     }
 
     @GetMapping("/all/{pageNumber}/{pageSize}")
-    public Page<TransactionDTO> getAllTransactions(@PathVariable("pageNumber") Integer pageNumber,@PathVariable("pageSize") Integer pageSize) {
+    public Page<TransactionDTO> getAllTransactions(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize) {
         return transactionService.getAllTransactions(pageNumber, pageSize);
+    }
+
+    @GetMapping("/day/income")
+    public double getIncomeForActualDay() {
+        return transactionService.getIncomeForActualDay();
+    }
+
+    @GetMapping("/week/income")
+    public double getIncomeForActualWeek() {
+        return transactionService.getIncomeForActualWeek();
+    }
+
+    @GetMapping("/month/income")
+    public double getIncomeForActualMonth() {
+        return transactionService.getIncomeForActualMonth();
+    }
+
+    @GetMapping("/day")
+    public List<TransactionDTO> getTransactionsForActualDay() {
+        return transactionService.getTransactionsForActualDay();
+    }
+
+    @GetMapping("/week")
+    public List<TransactionDTO> getTransactionsForActualWeek() {
+        return transactionService.getTransactionsForActualWeek();
+    }
+
+    @GetMapping("/month")
+    public List<TransactionDTO> getTransactionsForActualMonth() {
+        return transactionService.getTransactionsForActualMonth();
     }
 }

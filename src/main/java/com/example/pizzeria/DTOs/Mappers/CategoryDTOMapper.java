@@ -19,7 +19,9 @@ public class CategoryDTOMapper implements Function<Category, CategoryDTO> {
         return new CategoryDTO(
                 category.getId(),
                 category.getName(),
-                category.getItems().stream().map(itemDTOMapper).collect(Collectors.toList())
+                category.getItems().stream().map(itemDTOMapper).collect(Collectors.toList()),
+                category.getImage(),
+                category.getIcon()
         );
     }
 }

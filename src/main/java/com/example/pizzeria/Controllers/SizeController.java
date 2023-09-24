@@ -17,4 +17,9 @@ public class SizeController {
     public Size addSize(@RequestBody Size size) {
         return sizeService.addSize(size);
     }
+
+    @GetMapping("/{id}")
+    public Size getSizeById(@PathVariable("id") Long id){
+        return sizeService.getSizeById(id);
+    }
 }

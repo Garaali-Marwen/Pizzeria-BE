@@ -6,4 +6,5 @@ public interface SizeService {
 
     Size addSize(Size size);
     void deleteSize(Long id);
+    Size getSizeById(Long id);
 }

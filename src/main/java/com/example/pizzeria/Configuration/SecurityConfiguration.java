@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/client/add", "/api/user/authenticate", "/api/category/all",
-                        "/api/item/all/**","/api/orderItem/verify-availability", "/ws/**", "/webhook")
+                        "/api/item/all/**", "/api/offer/all/**","/api/orderItem/verify-availability", "/ws/**", "/webhook", "/api/contact/add")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

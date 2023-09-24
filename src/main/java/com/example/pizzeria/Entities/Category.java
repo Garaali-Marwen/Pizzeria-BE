@@ -16,4 +16,8 @@ public class Category {
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Item> items = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Image image;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Image icon;
 }

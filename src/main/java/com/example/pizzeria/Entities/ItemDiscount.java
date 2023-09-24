@@ -11,8 +11,11 @@ public class ItemDiscount {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double discount;
+    private int quantity;
     @ManyToOne
     private Item item;
     @ManyToOne
     private Offer offer;
+    @ManyToOne
+    private Size size;
 }

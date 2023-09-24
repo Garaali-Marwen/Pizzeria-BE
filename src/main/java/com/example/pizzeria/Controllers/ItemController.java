@@ -28,6 +28,10 @@ public class ItemController {
     public Page<ItemDTO> getAllItems(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize) {
         return itemService.getAllItems(pageNumber, pageSize);
     }
+    @GetMapping("/all")
+    public List<ItemDTO> findAllItems() {
+        return itemService.findAllItems();
+    }
 
     @PostMapping(value = "/add", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ItemDTO addIngredient(@RequestPart("item") Item item,
@@ -67,8 +71,8 @@ public class ItemController {
         itemService.deleteItem(itemId);
     }
 
-    @GetMapping("/category/{name}")
-    public List<ItemDTO> getItemsByCategory_Name(@PathVariable("name") String name) {
-        return itemService.getItemsByCategory_Name(name);
+    @GetMapping("/drinks")
+    public List<ItemDTO> getItemsByItemIngredientsIsNull() {
+        return itemService.getItemsByItemIngredientsIsNull();
     }
 }

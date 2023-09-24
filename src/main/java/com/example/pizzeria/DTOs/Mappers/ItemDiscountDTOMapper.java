@@ -17,7 +17,9 @@ public class ItemDiscountDTOMapper implements Function<ItemDiscount, ItemDiscoun
         return new ItemDiscountDTO(
                 itemDiscount.getId(),
                 itemDiscount.getDiscount(),
-                itemDTOMapper.apply(itemDiscount.getItem())
+                itemDTOMapper.apply(itemDiscount.getItem()),
+                itemDiscount.getQuantity(),
+                itemDiscount.getSize()
         );
     }
 }
