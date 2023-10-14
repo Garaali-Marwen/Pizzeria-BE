@@ -282,7 +282,7 @@ public class OrderServiceImpl implements OrderService {
                 "Votre commande N° " + getOrderNumber(order.getId()) +
                 " est maintenant prête pour récupération. Voici les détails de votre commande : \n "
                 + orderItems +
-                " est prête. Veuillez vous rendre chez notre restaurant  pour la récupérer.\n" +
+                "Veuillez vous rendre chez notre restaurant  pour la récupérer.\n" +
                 "\n" +
                 "Nous vous remercions pour votre confiance.";
     }
