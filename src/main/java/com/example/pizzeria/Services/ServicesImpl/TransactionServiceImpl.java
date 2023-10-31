@@ -63,7 +63,7 @@ public class TransactionServiceImpl implements TransactionService {
     public double getIncomeForActualMonth() {
         LocalDate now = LocalDate.now();
         LocalDate startOfMonth = now.with(TemporalAdjusters.firstDayOfMonth());
-        LocalDate endOfMonth = now.with(TemporalAdjusters.lastDayOfMonth());
+        LocalDate endOfMonth = now.with(TemporalAdjusters.lastDayOfMonth()).plusDays(1);
         return transactionRepository.getIncomeForActualMonth(
                 java.sql.Date.valueOf(startOfMonth),
                 java.sql.Date.valueOf(endOfMonth)
@@ -91,7 +91,7 @@ public class TransactionServiceImpl implements TransactionService {
     public List<TransactionDTO> getTransactionsForActualMonth() {
         LocalDate now = LocalDate.now();
         LocalDate startOfMonth = now.with(TemporalAdjusters.firstDayOfMonth());
-        LocalDate endOfMonth = now.with(TemporalAdjusters.lastDayOfMonth());
+        LocalDate endOfMonth = now.with(TemporalAdjusters.lastDayOfMonth()).plusDays(1);
         return transactionRepository.getTransactionsForActualMonth(
                 java.sql.Date.valueOf(startOfMonth),
                 java.sql.Date.valueOf(endOfMonth)
